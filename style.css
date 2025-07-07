@@ -1,43 +1,371 @@
-:root{
-    --cor-fundo: #01080E ;
-    --cor-principal: #0B0D20 ;
-    --cor-secundaria: #212333; 
-    --cor-destaque: #2BDEFD;
-    --cor-texto: #D7F9FF;
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Moderno e Responsivo</title>
+    <style>
+        /* Reset e configurações base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-}
+        /* Variáveis CSS aprimoradas */
+        :root {
+            /* Cores principais */
+            --cor-fundo: #01080E;
+            --cor-principal: #0B0D20;
+            --cor-secundaria: #212333;
+            --cor-destaque: #2BDEFD;
+            --cor-texto: #D7F9FF;
+            --cor-texto-secundario: #A8C8D1;
+            --cor-borda: #1A1D35;
+            --cor-sombra: rgba(43, 222, 253, 0.2);
+            --cor-hover: rgba(43, 222, 253, 0.1);
+            
+            /* Tipografia */
+            --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --fonte-destaque: 'Georgia', serif;
+            --tamanho-base: 16px;
+            --altura-linha: 1.6;
+            
+            /* Espaçamentos */
+            --espacamento-xs: 0.5rem;
+            --espacamento-sm: 1rem;
+            --espacamento-md: 1.5rem;
+            --espacamento-lg: 2rem;
+            --espacamento-xl: 3rem;
+            
+            /* Bordas e sombras */
+            --raio-borda: 12px;
+            --raio-borda-pequeno: 8px;
+            --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --sombra-media: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --sombra-destaque: 0 0 20px var(--cor-sombra);
+            
+            /* Transições */
+            --transicao-rapida: 0.15s ease-out;
+            --transicao-media: 0.3s ease-out;
+            --transicao-lenta: 0.5s ease-out;
+        }
 
-body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+        /* Configurações de fonte para melhor legibilidade */
+        html {
+            font-size: var(--tamanho-base);
+            scroll-behavior: smooth;
+        }
 
-.caixa-principal{
-    background-color: var(--cor-principal);
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-    padding: 20px;
-}
+        body {
+            font-family: var(--fonte-principal);
+            background: linear-gradient(135deg, var(--cor-fundo) 0%, #0A1120 100%);
+            color: var(--cor-texto);
+            line-height: var(--altura-linha);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: var(--espacamento-sm);
+            position: relative;
+            overflow-x: hidden;
+        }
 
-h1{
-    color: var(--cor-destaque);
-}
+        /* Efeito de fundo animado */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(43, 222, 253, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(43, 222, 253, 0.05) 0%, transparent 50%);
+            animation: backgroundPulse 10s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
 
-button {
-    background-color: var(--cor-secundaria);
-    color: var(--cor-texto);
-    border: none;
-    border-radius: 15px;
-    padding: 15px;
-    transition: background-color 0.3s;
-}
+        @keyframes backgroundPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
 
-button:hover{
-    background-color: var(--cor-destaque);
-    color: var(--cor-principal);
-}
+        /* Container principal aprimorado */
+        .caixa-principal {
+            background: linear-gradient(145deg, var(--cor-principal) 0%, #0F1125 100%);
+            border: 1px solid var(--cor-borda);
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+            padding: var(--espacamento-xl);
+            border-radius: var(--raio-borda);
+            box-shadow: var(--sombra-media), var(--sombra-destaque);
+            position: relative;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.8s ease-out;
+            transition: transform var(--transicao-media), box-shadow var(--transicao-media);
+        }
+
+        .caixa-principal:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media), 0 0 30px var(--cor-sombra);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tipografia aprimorada */
+        h1 {
+            font-family: var(--fonte-destaque);
+            color: var(--cor-destaque);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: var(--espacamento-lg);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(43, 222, 253, 0.3); }
+            100% { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(43, 222, 253, 0.6); }
+        }
+
+        h2 {
+            color: var(--cor-texto);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: var(--espacamento-md);
+            opacity: 0.9;
+        }
+
+        p {
+            color: var(--cor-texto-secundario);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            margin-bottom: var(--espacamento-md);
+            max-width: 60ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Botões modernos e acessíveis */
+        .botao-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--espacamento-md);
+            justify-content: center;
+            margin-top: var(--espacamento-xl);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, #2A2B45 100%);
+            color: var(--cor-texto);
+            border: 2px solid transparent;
+            border-radius: var(--raio-borda-pequeno);
+            padding: var(--espacamento-sm) var(--espacamento-lg);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transicao-media);
+            position: relative;
+            overflow: hidden;
+            min-width: 120px;
+            box-shadow: var(--sombra-suave);
+            font-family: inherit;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left var(--transicao-lenta);
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, var(--cor-destaque) 0%, #1BC4E8 100%);
+            color: var(--cor-principal);
+            border-color: var(--cor-destaque);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-media), 0 0 20px rgba(43, 222, 253, 0.4);
+        }
+
+        button:focus {
+            outline: 2px solid var(--cor-destaque);
+            outline-offset: 2px;
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Botão primário especial */
+        .botao-primary {
+            background: linear-gradient(135deg, var(--cor-destaque) 0%, #1BC4E8 100%);
+            color: var(--cor-principal);
+            border-color: var(--cor-destaque);
+            font-weight: 700;
+        }
+
+        .botao-primary:hover {
+            background: linear-gradient(135deg, #1BC4E8 0%, var(--cor-destaque) 100%);
+            box-shadow: var(--sombra-media), 0 0 25px rgba(43, 222, 253, 0.6);
+        }
+
+        /* Cards e seções */
+        .secao {
+            margin-bottom: var(--espacamento-xl);
+            padding: var(--espacamento-lg);
+            background: rgba(33, 35, 51, 0.3);
+            border-radius: var(--raio-borda-pequeno);
+            border: 1px solid var(--cor-borda);
+            backdrop-filter: blur(5px);
+            transition: all var(--transicao-media);
+        }
+
+        .secao:hover {
+            background: rgba(33, 35, 51, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Grid responsivo */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--espacamento-md);
+            margin-top: var(--espacamento-lg);
+        }
+
+        /* Indicador de carregamento */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--cor-texto-secundario);
+            border-radius: 50%;
+            border-top-color: var(--cor-destaque);
+            animation: spin 1s linear infinite;
+            margin-right: var(--espacamento-xs);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsividade aprimorada */
+        @media (max-width: 768px) {
+            .caixa-principal {
+                padding: var(--espacamento-lg);
+                margin: var(--espacamento-sm);
+            }
+            
+            .botao-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            button {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: var(--espacamento-xs);
+            }
+            
+            .caixa-principal {
+                padding: var(--espacamento-md);
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Modo de alto contraste (acessibilidade) */
+        @media (prefers-contrast: high) {
+            :root {
+                --cor-texto: #FFFFFF;
+                --cor-destaque: #00FFFF;
+                --cor-borda: #FFFFFF;
+            }
+            
+            button {
+                border: 2px solid var(--cor-texto);
+            }
+        }
+
+        /* Redução de movimento para acessibilidade */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Melhor legibilidade em telas grandes */
+        @media (min-width: 1200px) {
+            .caixa-principal {
+                max-width: 900px;
+            }
+        }
+
+        /* Suporte para tema escuro do sistema */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --cor-fundo: #000510;
+                --cor-principal: #050818;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="caixa-principal">
+        <h1>Bem-vindo ao Futuro</h1>
+        <h2>Design Moderno e Responsivo</h2>
+        <p>Este é um exemplo de como seu site pode ficar com um design moderno, responsivo e otimizado para performance e acessibilidade.</p>
+        
+        <div class="secao">
+            <h2>Características Principais</h2>
+            <p>Design limpo, animações suaves, responsividade total e acessibilidade completa.</p>
+        </div>
+        
+        <div class="grid">
+            <div class="secao">
+                <h2>Responsivo</h2>
+                <p>Adapta-se perfeitamente a qualquer dispositivo.</p>
+            </div>
+            <div class="secao">
+                <h2>Acessível</h2>
+                <p>Otimizado para todos os usuários, incluindo pessoas com deficiência.</p>
+            </div>
+        </div>
+        
+        <div class="botao-container">
+            <button class="botao-primary">Começar Agora</button>
+            <button>Saiba Mais</button>
+            <button>Contato</button>
+        </div>
+    </main>
+</body>
+</html>
